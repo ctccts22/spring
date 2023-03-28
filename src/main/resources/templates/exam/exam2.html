@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">반복문</title>
+    <style type="text/css">
+        table{
+            border: 1px solid black;
+            width: 700px;
+            table-layout: auto;
+            text-align: center;
+        }
+        th {
+            border: 1px solid black;
+            background-color: cornflowerblue;
+            color: azure;
+            height: 30px;
+        }
+        td {
+            border: 1px solid black;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>thymeleaf 반복문</h1>
+    - 태그속성 th:each <br>
+    - 예시 : th:each="약어 : ${루프가능한 객체}" -> th:each="l : ${memberList}"<br>
+    - 배열, 컬렉션 반복이 이루어질 수 있는 객체 마지막인덱스 종류시 까지
+    - 유효범위 : tag 닫을 때 까지
+
+<table>
+    <thead>
+        <tr>
+            <th>회원아이디</th>
+            <th>회원비밀번호</th>
+            <th>회원등급</th>
+            <th>회원이름</th>
+            <th>회원연락처</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="l : ${memberList}">
+            <td th:text="${l.memberId}"></td>
+            <td th:text="${l.memberPw}"></td>
+            <td th:text="${l.memberLevel}"></td>
+            <td th:text="${l.memberName}"></td>
+            <td>[[${l.memberMobile}]]</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
